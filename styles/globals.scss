@@ -119,25 +119,19 @@ base, html {
   @media(min-width: 1012px) {
     margin-bottom: 32px;
   }
-}
-
-.repo-item__name {
-  display: flex;
-  color: #096BDE;
-  font-size: 16px;
-  line-height: 1.5;
 
   h3 {
+    display: flex;
+    color: #096BDE;
     font-size: 16px;
+    line-height: 1.5;
     font-weight: 400;
-  }
-  .repo-item__owner {
-    font-weight: 600;
-  }
 
-  @media(min-width: 1012px) {
-    font-size: 24px;
-    h3 {
+    .repo-item__name {
+      font-weight: 600;
+    }
+
+    @media(min-width: 1012px) {
       font-size: 24px;
     }
   }
@@ -173,6 +167,19 @@ base, html {
       font-weight: 600;
       color: #24292F;
     }
+  }
+}
+
+.repo-item__issues-warper {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  &.open {
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
   }
 }
 

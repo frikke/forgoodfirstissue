@@ -1,4 +1,4 @@
-name: Deploy to forgoodfirstissue.dev
+name: Deploy to forgoodfirstissue.github.com
 
 on:
   # Runs on pushes targeting the default branch
@@ -64,17 +64,15 @@ jobs:
         env:
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - name: Update happycommits.json
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a #v4.16.0
         with:
           commit_message: update generated.json [skip actions]
           branch: deploy
           file_pattern: 'generated.json'
           skip_checkout: true
           push_options: '--force'
-      - name: Static HTML export with Next.js
-        run: npm run export
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: ./out
 
@@ -88,4 +86,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4.0.5
